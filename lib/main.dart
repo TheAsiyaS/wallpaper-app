@@ -1,15 +1,5 @@
 import 'package:flutter/material.dart';
-/*
-Challenge in brief
-The challenge is to develop a small wallpaper flutter app with the following features
-A home that lists all popular photos from pexels. The image list should be similar to pinterests image listing style. This listing should have a lazy loading feature where the image loads when the user scrolls.
-On tapping the image, the high resolution image should be downloaded to the device.
 
-Notes:
-To accomplish this, you can use pexels open api for free images. You can read further in the documentation here. 
-You shall use provider or any other modern state management tools to accomplish the lazy loading feature.
-
- */
 void main() {
   runApp(const MyApp());
 }
