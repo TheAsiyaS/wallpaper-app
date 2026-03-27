@@ -32,7 +32,7 @@ class SplashScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 20),
-              // Optional: a thin minimalist accent line
+            
               Container(
                 height: 1,
                 width: 60,
