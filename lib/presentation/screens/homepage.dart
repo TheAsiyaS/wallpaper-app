@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wallpaper_app/presentation/widgets/photo_grid.dart';
 
 
 class HomeScreen extends StatelessWidget {
@@ -17,7 +18,7 @@ class HomeScreen extends StatelessWidget {
           const SizedBox(width: 4),
         ],
       ),
-      body:Column(),
+      body:PhotoGrid(),
     );
   }
 }
