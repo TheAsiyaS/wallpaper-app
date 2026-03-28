@@ -1,6 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 
+import '../../application/downloadbloc/download_bloc.dart';
+import '../../application/photobloc/photo_bloc.dart';
 import '../../infrastructure/repositories/photo_repository.dart';
 import '../../infrastructure/services/download_service.dart';
 import '../../infrastructure/services/pexels_api_service.dart' show PexelsApiService;
@@ -40,5 +42,12 @@ Future<void> setupDependencies() async {
       apiService: sl(),
       downloadService: sl(),
     ),
+  );
+// --------bloc
+   sl.registerFactory<PhotoBloc>(
+    () => PhotoBloc(repository: sl()),
+  );
+  sl.registerFactory<DownloadBloc>(
+    () => DownloadBloc(repository: sl()),
   );
 }
