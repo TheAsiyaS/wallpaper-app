@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:wallpaper_app/presentation/screens/splashScreen.dart';
 
-
-
 void main() {
-
-  
   runApp(const OpaqueApp());
 }
 
@@ -15,10 +11,7 @@ class OpaqueApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return
-    
-    
-    MyApp();
+    return MyApp();
   }
 }
 
@@ -28,17 +21,17 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Opaque Wallpapers',
-        debugShowCheckedModeBanner: false,
-        
-        theme: ThemeData(
-          useMaterial3: true,
-          brightness: Brightness.dark,
-          scaffoldBackgroundColor: Colors.black,
-          colorSchemeSeed: Colors.white,
-        ),
-        
-        home: const SplashScreen(),
-      );
+      title: 'Opaque Wallpapers',
+      debugShowCheckedModeBanner: false,
+
+      theme: ThemeData(
+        useMaterial3: true,
+        brightness: Brightness.dark,
+        scaffoldBackgroundColor: Colors.black,
+        colorSchemeSeed: Colors.white,
+      ),
+
+      home: const SplashScreen(),
+    );
   }
 }

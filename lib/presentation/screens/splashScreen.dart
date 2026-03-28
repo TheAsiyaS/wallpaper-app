@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wallpaper_app/presentation/screens/homepage.dart';
 
 
 class SplashScreen extends StatelessWidget {
@@ -7,7 +8,13 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
        
+Future.delayed(const Duration(seconds: 3), () async {
+     
 
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
+        return const HomeScreen();
+      }));
+    });   
     final size = MediaQuery.of(context).size;
 
     return Scaffold(
