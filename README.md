@@ -1,17 +1,27 @@
-# wallpaper_app
+Opaque Wallpapers 
 
-A new Flutter project.
 
-## Getting Started
+What’s Inside?
+The Pinterest Look: Used a Masonry Grid so images of all sizes fit perfectly without gaps.
 
-This project is a starting point for a Flutter application.
+Scroll Forever: Implemented "Lazy Loading"—new wallpapers pop in automatically as you scroll down.
 
-A few resources to get you started if this is your first Flutter project:
+HD Downloads: High-res images from Pexels saved straight to your device.
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+Super Fast: Used image caching so you don't waste data re-loading the same photos.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+🛠️ The Tech Part
+State Management: BLoC (Because it's clean and keeps the UI separate from the logic).
+
+API: Dio (Handling all the Pexels communication).
+
+Database: CachedNetworkImage for that buttery-smooth scrolling.
+
+How to run it
+Grab a Pexels API key.
+
+Drop it into api_service.dart.
+
+Run flutter pub get and then flutter run.
+
+Note: Built and tested using JDK 17 for maximum stability.
