@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:wallpaper_app/presentation/screens/splashScreen.dart';
-
+//flutter packages pub run build_runner watch --use-polling-watcher --delete-conflicting-outputs
 void main() {
   runApp(const OpaqueApp());
 }
