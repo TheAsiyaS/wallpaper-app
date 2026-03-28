@@ -1,29 +1,59 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:wallpaper_app/infrastructure/models/photo_model.dart';
+
+import '../../application/downloadbloc/download_bloc.dart';
+import '../../application/downloadbloc/download_event.dart';
+import '../../application/downloadbloc/download_state.dart';
 
 class ImageTile extends StatelessWidget {
-  final String smallUrl;
-  final String originalUrl;
-  final String photographer;
+  final PhotoModel photo;
 
   const ImageTile({
     super.key,
-    required this.smallUrl,
-    required this.originalUrl,
-    required this.photographer,
+    required this.photo,
   });
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () => _onTap(context),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(12),
-        child: Stack(
-          children: [
-            _buildImage(),
-            _buildPhotographerLabel(),
-          ],
+    return BlocListener<DownloadBloc, DownloadState>(
+      listener: (context, state) {
+        if (state is DownloadSuccess) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: const Text('Wallpaper saved to gallery!'),
+              backgroundColor: const Color(0xFF7C3AED),
+              behavior: SnackBarBehavior.floating,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+            ),
+          );
+        }
+        if (state is DownloadFailure) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(state.message),
+              backgroundColor: Colors.redAccent,
+              behavior: SnackBarBehavior.floating,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+            ),
+          );
+        }
+      },
+      child: GestureDetector(
+        onTap: () => _onTap(context),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(12),
+          child: Stack(
+            children: [
+              _buildImage(),
+              _buildPhotographerLabel(),
+            ],
+          ),
         ),
       ),
     );
@@ -31,7 +61,7 @@ class ImageTile extends StatelessWidget {
 
   Widget _buildImage() {
     return CachedNetworkImage(
-      imageUrl: smallUrl,
+      imageUrl: photo.src.medium,
       fit: BoxFit.cover,
       fadeInDuration: const Duration(milliseconds: 300),
       placeholder: (context, url) => Container(
@@ -51,7 +81,10 @@ class ImageTile extends StatelessWidget {
       errorWidget: (context, url, error) => Container(
         height: 180,
         color: const Color(0xFF1E1E22),
-        child: const Icon(Icons.broken_image_rounded, color: Colors.white24),
+        child: const Icon(
+          Icons.broken_image_rounded,
+          color: Colors.white24,
+        ),
       ),
     );
   }
@@ -71,7 +104,7 @@ class ImageTile extends StatelessWidget {
         ),
         padding: const EdgeInsets.fromLTRB(8, 16, 8, 8),
         child: Text(
-          photographer,
+          photo.photographer,
           style: const TextStyle(
             color: Colors.white70,
             fontSize: 10,
@@ -85,15 +118,11 @@ class ImageTile extends StatelessWidget {
   }
 
   void _onTap(BuildContext context) {
-
-    ScaffoldMessenger.of(context).showSnackBar( // snack bar for tap
-      SnackBar(
-        content: Text('Tapped — $photographer'),
-        backgroundColor: const Color(0xFF7C3AED),
-        behavior: SnackBarBehavior.floating,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-        duration: const Duration(seconds: 1),
-      ),
-    );
+    context.read<DownloadBloc>().add(
+          DownloadPhoto(
+            url: photo.src.original,
+            photoId: photo.id,
+          ),
+        );
   }
 }
