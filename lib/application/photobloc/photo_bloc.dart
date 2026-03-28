@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../infrastructure/repositories/photo_repository.dart';
+
+import 'package:wallpaper_app/infrastructure/repositories/photo_repository.dart';
 import 'photo_event.dart';
 import 'photo_state.dart';
 

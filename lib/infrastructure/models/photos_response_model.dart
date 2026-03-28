@@ -16,4 +16,4 @@ class PhotosResponseModel with _$PhotosResponseModel {
 
   factory PhotosResponseModel.fromJson(Map<String, dynamic> json) =>
       _$PhotosResponseModelFromJson(json);
-}
+} 

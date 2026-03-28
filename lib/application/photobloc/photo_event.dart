@@ -12,5 +12,5 @@ class FetchPhotos extends PhotoEvent {
 }
 
 class LoadMorePhotos extends PhotoEvent {
-  const LoadMorePhotos();
+  const LoadMorePhotos();  
 }
