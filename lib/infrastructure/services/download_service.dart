@@ -1,7 +1,9 @@
 import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:path_provider/path_provider.dart';
-import '../../core/constant/appconstant.dart';
+import 'package:permission_handler/permission_handler.dart';
+import 'package:wallpaper_app/core/constant/appconstant.dart';
+
 
 class DownloadService {
   final Dio dio;
@@ -14,6 +16,14 @@ class DownloadService {
     void Function(int received, int total)? onProgress,
   }) async {
     try {
+      // request permission first
+      if (Platform.isAndroid) {
+        final status = await Permission.storage.request();
+        if (!status.isGranted) {
+          throw Exception('Storage permission denied');
+        }
+      }
+
       final directory = await _getSaveDirectory();
       final filePath = '${directory.path}/$photoId.jpg';
 
@@ -33,7 +43,9 @@ class DownloadService {
     Directory? directory;
 
     if (Platform.isAndroid) {
-      directory = Directory('/storage/emulated/0/Pictures/${AppConstants.downloadFolder}');
+      directory = Directory(
+        '/storage/emulated/0/Pictures/${AppConstants.downloadFolder}',
+      );
     } else if (Platform.isIOS) {
       directory = await getApplicationDocumentsDirectory();
     } else {

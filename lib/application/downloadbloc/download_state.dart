@@ -1,5 +1,4 @@
 import 'package:equatable/equatable.dart';
-
 abstract class DownloadState extends Equatable {
   const DownloadState();
 
