@@ -1,27 +1,29 @@
-Opaque Wallpapers 
+# Opaque Wallpapers
+
+A Flutter wallpaper app using Pexels API.
+
+## Features
+- Pinterest-style masonry grid
+- Lazy loading with pagination
+- Download wallpapers to gallery
+- BLoC state management
+- Dio for API calls
+
+## Setup
+1. Clone the repo
+2. Get your free API key from [pexels.com/api](https://www.pexels.com/api/)
+3. Add your key in `lib/core/constants/app_constants.dart`
+4. Run `flutter pub get`
+5. Run `dart run build_runner build --delete-conflicting-outputs`
+6. Run `flutter run`
+
+## Download APK
 
 
-What’s Inside?
-The Pinterest Look: Used a Masonry Grid so images of all sizes fit perfectly without gaps.
-
-Scroll Forever: Implemented "Lazy Loading"—new wallpapers pop in automatically as you scroll down.
-
-HD Downloads: High-res images from Pexels saved straight to your device.
-
-Super Fast: Used image caching so you don't waste data re-loading the same photos.
-
-🛠️ The Tech Part
-State Management: BLoC (Because it's clean and keeps the UI separate from the logic).
-
-API: Dio (Handling all the Pexels communication).
-
-Database: CachedNetworkImage for that buttery-smooth scrolling.
-
-How to run it
-Grab a Pexels API key.
-
-Drop it into api_service.dart.
-
-Run flutter pub get and then flutter run.
-
-Note: Built and tested using JDK 17 for maximum stability.
+## Tech Stack
+- Flutter
+- BLoC
+- Dio
+- Freezed
+- GetIt
+- Pexels API
