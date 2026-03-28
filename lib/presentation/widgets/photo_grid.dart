@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:wallpaper_app/presentation/widgets/image_title.dart';
 
 const List<Map<String, String>> kDummyPhotos = [
   {
@@ -87,7 +88,11 @@ class PhotoGrid extends StatelessWidget {
       itemCount: kDummyPhotos.length,
       itemBuilder: (context, index) {
         final photo = kDummyPhotos[index];
-        return Container();
+        return ImageTile(
+          smallUrl: photo['small']!,
+          originalUrl: photo['original']!,
+          photographer: photo['photographer']!,
+        );
       },
     );
   }
