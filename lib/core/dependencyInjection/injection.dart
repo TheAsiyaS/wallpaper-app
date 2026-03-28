@@ -1,6 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 
+import '../../infrastructure/services/download_service.dart';
+import '../../infrastructure/services/pexels_api_service.dart';
 import '../constant/appconstant.dart';
 
 
@@ -20,6 +22,15 @@ Future<void> setupDependencies() async {
         receiveTimeout: const Duration(seconds: 10),
       ),
     ),
+  );
+
+  // ── Services ──────────────────────────────────────────────────────────────
+  sl.registerLazySingleton<PexelsApiService>(
+    () => PexelsApiService(dio: sl()),
+  );
+
+  sl.registerLazySingleton<DownloadService>(
+    () => DownloadService(dio: sl()),
   );
 
 }
