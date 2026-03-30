@@ -27,7 +27,7 @@ class PhotoLoaded extends PhotoState {
     required this.currentPage,
   });
 
-  PhotoLoaded copyWith({
+  PhotoLoaded copyWith({ /*  d   */
     List<PhotoModel>? photos,
     bool? hasReachedMax,
     int? currentPage,

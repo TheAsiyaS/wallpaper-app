@@ -6,6 +6,7 @@ import 'package:wallpaper_app/presentation/widgets/photo_grid.dart';
 import '../../application/photobloc/photo_bloc.dart';
 import '../../application/photobloc/photo_event.dart';
 import '../../application/photobloc/photo_state.dart';
+import '../../infrastructure/models/photo_model.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -95,8 +96,9 @@ class _HomeScreenState extends State<HomeScreen> {
           }
 
           if (state is PhotoLoaded) {
+            final List<PhotoModel> reversephotolist =state.photos.reversed.toList();
             return PhotoGrid(
-              photos: state.photos,
+              photos: reversephotolist,
               scrollController: _scrollController,
               isLoadingMore: state is PhotoLoadingMore,
             );

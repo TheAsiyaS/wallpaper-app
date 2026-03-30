@@ -13,7 +13,7 @@ final GetIt sl = GetIt.instance;
 
 Future<void> setupDependencies() async {
   // ── Dio ───────────────────────────────────────────────────────────────────
-  sl.registerLazySingleton<Dio>(
+  sl.registerLazySingleton<Dio>(/*  d  */
     () => Dio(
       BaseOptions(
         baseUrl: AppConstants.baseUrl,
@@ -44,7 +44,7 @@ Future<void> setupDependencies() async {
     ),
   );
 // --------bloc
-   sl.registerFactory<PhotoBloc>(
+   sl.registerFactory<PhotoBloc>(/*  d  y factory*/
     () => PhotoBloc(repository: sl()),
   );
   sl.registerFactory<DownloadBloc>(

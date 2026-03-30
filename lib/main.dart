@@ -9,7 +9,7 @@ import 'package:wallpaper_app/presentation/screens/splashScreen.dart';
 //flutter packages pub run build_runner watch --use-polling-watcher --delete-conflicting-outputs
 //dart run build_runner build --delete-conflicting-outputs
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+  WidgetsFlutterBinding.ensureInitialized();/*  d  */
   await setupDependencies();
   runApp(const OpaqueApp());
 }

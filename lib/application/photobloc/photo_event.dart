@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-abstract class PhotoEvent extends Equatable {
+abstract class PhotoEvent extends Equatable {/*  d ,Equatable */
   const PhotoEvent();
 
   @override

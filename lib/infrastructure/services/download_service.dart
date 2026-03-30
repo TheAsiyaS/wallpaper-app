@@ -38,7 +38,7 @@ class DownloadService {
 );
 
       // delete temp file after saving
-      final tempFile = File(tempPath);
+      final tempFile = File(tempPath);/*  d  */
       if (await tempFile.exists()) {
         await tempFile.delete();
       }
@@ -61,22 +61,22 @@ class DownloadService {
 
     if (sdkInt >= 33) {
       // Android 13, 14 and 15
-      final status = await Permission.photos.request();
+      final status = await Permission.photos.request();/*  d  */
       if (!status.isGranted && !status.isLimited) {
         throw Exception('Storage permission denied');
       }
     } else if (sdkInt >= 30) {
       // Android 11 and 12
-      final status = await Permission.manageExternalStorage.request();
+      final status = await Permission.manageExternalStorage.request();/*  d  */
       if (!status.isGranted) {
         throw Exception('Storage permission denied');
       }
     } else {
       // Android 10 and below
-      final status = await Permission.storage.request();
+      final status = await Permission.storage.request();/*  d  */
       if (!status.isGranted) {
         throw Exception('Storage permission denied');
       }
     }
   }
-}
+}/* why different permission ask */
