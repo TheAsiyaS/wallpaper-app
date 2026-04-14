@@ -44,7 +44,7 @@ Future<void> setupDependencies() async {
     ),
   );
 // --------bloc
-   sl.registerFactory<PhotoBloc>(/*  d  y factory*/
+   sl.registerFactory<PhotoBloc>(/*  d  y factory , */
     () => PhotoBloc(repository: sl()),
   );
   sl.registerFactory<DownloadBloc>(
